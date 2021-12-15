@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   const { title, author } = req.query;
 
   if (title) {
-    const searchResults = await getBooksByTitle(title);
+    const searchResults = await getBooksByTitle(title); // test using http://localhost:3000/books?title=Clean+Code
     res.json({
       success: true,
       message: `Searched titles for ${title}`,

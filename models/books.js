@@ -14,10 +14,15 @@ export function getBookById(id) {
   });
 }
 
-export function getBooksByTitle(title) {
-  return books.filter((book) => {
-    if (book.title.toLowerCase().includes(title.toLowerCase())) {
-      return true;
-    }
-  });
+export async function getBooksByTitle(title) {
+  return await query(
+    `SELECT * FROM books WHERE title = $1;`,
+    [title]
+  );
+
+  // return books.filter((book) => {
+  //   if (book.title.toLowerCase().includes(title.toLowerCase())) {
+  //     return true;
+  //   }
+  // });
 }
