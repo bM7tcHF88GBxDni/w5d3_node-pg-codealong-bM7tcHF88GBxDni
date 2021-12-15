@@ -1,7 +1,11 @@
 import books from "../books-data.js";
+import { query } from "../db/index.js";
 
-export function getAllBooks() {
-  return books;
+export async function getAllBooks() {
+  //here we want to retrieve data from the database server
+  return await query(`SELECT * FROM books;`);
+
+  //return books;
 }
 
 export function getBookById(id) {
