@@ -31,3 +31,10 @@ export async function getBooksByTitle(title) {
   //   }
   // });
 }
+
+export async function getBooksByAuthor(author) {
+  return await query(
+    `SELECT * FROM books WHERE author = $1`,
+    [author]
+  )
+};

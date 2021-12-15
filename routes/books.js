@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import { getAllBooks, getBookById, getBooksByTitle } from "../models/books.js";
+import { getAllBooks, getBookById, getBooksByAuthor, getBooksByTitle } from "../models/books.js";
 
 // GET all books
 router.get("/", async (req, res) => {
@@ -13,6 +13,17 @@ router.get("/", async (req, res) => {
       success: true,
       message: `Searched titles for ${title}`,
       payload: searchResults,
+    });
+    return;
+  }
+
+  if (author) {
+    const authorResults = await getBooksByAuthor(author);
+
+    res.json({
+      success: true,
+      message: `Searched for books by ${author}`,
+      payload: authorResults
     });
     return;
   }
