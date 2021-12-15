@@ -6,7 +6,7 @@ Import books
 Create function to add each book to the database table
     For each book, send a query to insert it
 */
-import query from "../index.js";
+import { query } from "../index.js";
 import books from "../../books-data.js";
 
 async function populateBooksTable() {
