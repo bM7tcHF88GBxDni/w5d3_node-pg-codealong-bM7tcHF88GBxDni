@@ -23,9 +23,9 @@ router.get("/", async (req, res) => {
 });
 
 // GET specific book by id
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const requestedBook = getBookById(id);
+  const requestedBook = await getBookById(id); //test using http://localhost:3000/books/3
   res.json({
     success: true,
     message: `Found book ${id}`,

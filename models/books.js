@@ -8,10 +8,15 @@ export async function getAllBooks() {
   //return books;
 }
 
-export function getBookById(id) {
-  return books.filter((book) => {
-    return book.id.toString() === id;
-  });
+export async function getBookById(id) {
+  return await query(
+    `SELECT * FROM books WHERE id = $1;`,
+    [id]
+  );
+
+  // return books.filter((book) => {
+  //   return book.id.toString() === id;
+  // });
 }
 
 export async function getBooksByTitle(title) {
